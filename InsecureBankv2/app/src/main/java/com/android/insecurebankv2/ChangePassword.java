@@ -46,7 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /*
-The page that accepts new password and passes it on to the change password 
+The page that accepts new password and passes it on to the change password
 module. This new password can then be used by the user to log in to the account.
 @author Dinesh Shetty
 */
@@ -55,19 +55,19 @@ public class ChangePassword extends Activity {
 	EditText changePassword_text;
 	//	The TextView that automatically grabs the current logged in user's username
 	TextView textView_Username;
-	// The Button that maps to the change password-Submit button 
+	// The Button that maps to the change password-Submit button
 	Button changePassword_button;
 	//	Regex to ensure password is complex enough
-    private static final String PASSWORD_PATTERN = 
+    private static final String PASSWORD_PATTERN =
             "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
 	private Pattern pattern;
     private Matcher matcher;
 	String uname;
 	String result;
 	BufferedReader reader;
-	String serverip = "";
-	String serverport = "";
-	String protocol = "http://";
+	String serverip = "insecurebankv2.stage.trueseeing.io";
+	String serverport = "443";
+	String protocol = "https://";
 	SharedPreferences serverDetails;
 
 	@Override
@@ -77,8 +77,6 @@ public class ChangePassword extends Activity {
 
         // Get Server details from Shared Preference file.
 		serverDetails = PreferenceManager.getDefaultSharedPreferences(this);
-		serverip = serverDetails.getString("serverip", null);
-		serverport = serverDetails.getString("serverport", null);
 
 		changePassword_text = (EditText) findViewById(R.id.editText_newPassword);
 		Intent intent = getIntent();
@@ -121,7 +119,7 @@ public class ChangePassword extends Activity {
 		}
 
 		/*
-		The function that makes an HTTP Post to the server endpoint that handles the 
+		The function that makes an HTTP Post to the server endpoint that handles the
 		change password operation.
 		*/
 		public void postData(String valueIWantToSend) throws ClientProtocolException, IOException, JSONException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
@@ -154,7 +152,7 @@ public class ChangePassword extends Activity {
 					public void run() {
 						if (result != null) {
 							if (result.indexOf("Change Password Successful") != -1) {
-								//	Below code handles the Json response parsing 
+								//	Below code handles the Json response parsing
 								JSONObject jsonObject;
 								try {
 									jsonObject = new JSONObject(result);

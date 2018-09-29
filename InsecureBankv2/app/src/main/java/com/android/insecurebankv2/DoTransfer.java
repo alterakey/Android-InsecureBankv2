@@ -61,7 +61,7 @@ public class DoTransfer extends Activity {
 	EditText to;
 	//	The EditText that holds the to amount to be transferred between the accounts
 	EditText amount;
-	/*The EditText that takes the Phone number as input from the user. A confirmation of 
+	/*The EditText that takes the Phone number as input from the user. A confirmation of
 	successful transfer is sent to this phone number*/
 	EditText phoneNumber;
 	String number = "5554";
@@ -73,9 +73,9 @@ public class DoTransfer extends Activity {
 	HttpResponse responseBody;
 	JSONObject jsonObject;
 	InputStream in ;
-	String serverip = "";
-	String serverport = "";
-	String protocol = "http://";
+	String serverip = "insecurebankv2.stage.trueseeing.io";
+	String serverport = "443";
+	String protocol = "https://";
 	Button button1;
 	SharedPreferences serverDetails;
 	public static final String MYPREFS2 = "mySharedPreferences";
@@ -86,8 +86,6 @@ public class DoTransfer extends Activity {
 
         // Get Server details from Shared Preference file.
         serverDetails = PreferenceManager.getDefaultSharedPreferences(this);
-		serverip = serverDetails.getString("serverip", null);
-		serverport = serverDetails.getString("serverport", null);
 
         // Handle the transfer functionality
 		transfer = (Button) findViewById(R.id.button_Transfer);
@@ -115,7 +113,7 @@ public class DoTransfer extends Activity {
 
 		/**
 		 * constructor
-		 * @return 
+		 * @return
 		 */
 		public void AsyncHttpTransferPost(String string) {
 			//do something
@@ -246,7 +244,7 @@ public class DoTransfer extends Activity {
 	public class RequestDoGets2 extends AsyncTask < String, String, String > {
 		/**
 		 * constructor
-		 * @return 
+		 * @return
 		 */
 		public void AsyncHttpPost(String string) {
 			//do something

@@ -41,7 +41,7 @@ import android.widget.Toast;
 import com.marcohc.toasteroid.Toasteroid;
 
 /*
-The page that accepts new password and passes it on to the change password 
+The page that accepts new password and passes it on to the change password
 module. This new password can then be used by the user to log in to the account.
 @author Dinesh Shetty
 */
@@ -56,9 +56,9 @@ public class DoLogin extends Activity {
 	String superSecurePassword;
 	String rememberme_username, rememberme_password;
 	public static final String MYPREFS = "mySharedPreferences";
-	String serverip = "";
-	String serverport = "";
-	String protocol = "http://";
+	String serverip = "insecurebankv2.stage.trueseeing.io";
+	String serverport = "443";
+	String protocol = "https://";
 	BufferedReader reader;
 	SharedPreferences serverDetails;
 
@@ -70,8 +70,6 @@ public class DoLogin extends Activity {
 
         // Get Server details from Shared Preference file.
 		serverDetails = PreferenceManager.getDefaultSharedPreferences(this);
-		serverip = serverDetails.getString("serverip", null);
-		serverport = serverDetails.getString("serverport", null);
         if(serverip!=null && serverport!=null){
 
 		Intent data = getIntent();
